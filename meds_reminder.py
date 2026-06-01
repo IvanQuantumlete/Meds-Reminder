@@ -22,8 +22,10 @@ SEND_TIMES = [
 EARLY_OFFSET_MIN = 5
 EARLY_OFFSET_MAX = 15
 
-# Use discord.Client() for bot token
-client = discord.Client()
+# Required for newer discord.py versions
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
 
 async def human_type_and_send(channel, message):
     """Simulates human typing — pauses, bursts, realistic rhythm."""
